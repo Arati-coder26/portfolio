@@ -37,7 +37,93 @@ body{
 
 }
 
+/* =====================
+   NAVBAR
+===================== */
 
+.navbar{
+
+    background:rgba(0,0,0,0.95);
+    padding:15px 0;
+    z-index:1000;
+
+}
+
+
+.navbar-brand{
+
+    color:#ffffff!important;
+    font-size:28px;
+
+}
+
+
+.navbar-brand span{
+
+    color:#FACC15;
+
+}
+
+
+
+.nav-link{
+
+    color:#ffffff!important;
+    margin-left:20px;
+    font-weight:500;
+    transition:.3s;
+
+}
+
+
+.nav-link:hover{
+
+    color:#FACC15!important;
+
+}
+
+
+
+.contact-btn{
+
+    background:#FACC15;
+    color:#000!important;
+
+    padding:8px 22px!important;
+
+    border-radius:25px;
+
+}
+
+
+.contact-btn:hover{
+
+    background:#ffffff;
+    color:#000!important;
+
+}
+
+
+
+
+.navbar-toggler{
+
+    border:1px solid #FACC15;
+
+}
+
+
+
+.navbar-toggler-icon{
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(83%)
+    sepia(90%)
+    saturate(1000%);
+
+}
 
 /* Navbar */
 
@@ -179,119 +265,6 @@ body{
     color:var(--primary);
 
     margin-bottom:50px;
-
-}
-
-
-
-
-
-/* Buttons */
-
-
-.btn{
-
-    border-radius:30px;
-
-    padding:10px 25px;
-
-}
-
-
-
-.btn-primary{
-
-    background:var(--primary);
-
-    border-color:var(--primary);
-
-    color:#000;
-
-    font-weight:600;
-
-}
-
-
-
-.btn-primary:hover{
-
-    background:white;
-
-    border-color:white;
-
-    color:black;
-
-}
-
-
-
-
-/* Social Icons */
-
-
-.social{
-
-    width:45px;
-
-    height:45px;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#1a1a1a;
-
-    color:white;
-
-    font-size:22px;
-
-    margin-right:10px;
-
-    transition:.3s;
-
-}
-
-
-
-.social:hover{
-
-    background:var(--primary);
-
-    color:black;
-
-    transform:translateY(-5px);
-
-}
-
-
-
-
-
-/* Cards */
-
-
-.card,
-.project-card,
-.skill-box,
-.highlight-card{
-
-
-    background:var(--card);
-
-    color:white;
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    transition:.3s;
-
-}
-
 
 
 .card:hover,
