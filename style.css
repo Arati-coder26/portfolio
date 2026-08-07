@@ -1,3 +1,14 @@
+:root{
+    --primary:#2563EB;
+    --accent:#FACC15;
+    --dark:#050505;
+    --card:#111827;
+    --border:#1E40AF;
+    --text:#ffffff;
+    --muted:#cbd5e1;
+}
+
+
 *{
     margin:0;
     padding:0;
@@ -11,33 +22,51 @@ html{
 
 
 body{
-    font-family:'Segoe UI',sans-serif;
-    background:#0F172A;
-    color:#ffffff;
+
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:var(--dark);
+    color:var(--text);
+
 }
+
 
 /* Navbar */
 
 .navbar{
-    background:rgba(15,23,42,0.92);
+
+    background:rgba(5,5,5,0.95);
     backdrop-filter:blur(10px);
+
 }
 
 
-.navbar .nav-link{
+.navbar-brand{
 
-    color:#fff;
+    color:white!important;
+
+}
+
+
+.navbar-brand span{
+
+    color:var(--accent);
+
+}
+
+
+.nav-link{
+
+    color:white!important;
     margin-left:15px;
 
 }
 
 
-.navbar .nav-link:hover{
+.nav-link:hover{
 
-    color:#0d6efd;
+    color:var(--accent)!important;
 
 }
-
 
 
 
@@ -54,8 +83,9 @@ body{
 
     text-align:center;
     font-size:42px;
-    margin-bottom:50px;
     font-weight:700;
+    margin-bottom:50px;
+    color:var(--accent);
 
 }
 
@@ -73,21 +103,39 @@ body{
 }
 
 
-
 .hero h1{
 
     font-size:70px;
+    font-weight:800;
 
 }
 
+
+.hero h2{
+
+    font-size:45px;
+
+}
 
 
 .hero p{
 
-    color:#c7c7c7;
+    color:var(--muted);
+    max-width:650px;
 
 }
 
+
+.text-primary{
+
+    color:var(--primary)!important;
+
+}
+
+
+
+
+/* Profile Image */
 
 
 .profile-img{
@@ -96,11 +144,42 @@ body{
     height:320px;
     object-fit:cover;
     border-radius:50%;
-    border:8px solid #0d6efd;
-    box-shadow:0 0 40px rgba(13,110,253,.5);
+    border:8px solid var(--primary);
+    box-shadow:0 0 40px rgba(37,99,235,.6);
 
 }
 
+
+
+
+
+/* Buttons */
+
+
+.btn{
+
+    border-radius:30px;
+    padding:10px 25px;
+
+}
+
+
+
+.btn-primary{
+
+    background:var(--primary);
+    border-color:var(--primary);
+
+}
+
+
+.btn-primary:hover{
+
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#000;
+
+}
 
 
 
@@ -111,23 +190,31 @@ body{
 .social{
 
     display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
     width:45px;
     height:45px;
-    align-items:center;
-    justify-content:center;
+
     border-radius:50%;
-    background:#111827;
+
+    background:var(--card);
     color:white;
+
     font-size:22px;
+
     margin-right:10px;
+
     transition:.3s;
 
 }
 
 
+
 .social:hover{
 
-    background:#0d6efd;
+    background:var(--accent);
+    color:#000;
     transform:translateY(-5px);
 
 }
@@ -136,89 +223,40 @@ body{
 
 
 
-/* Highlight Cards */
-
-
-.highlight-card{
-
-    background:#111827;
-    padding:25px;
-    border-radius:15px;
-    border:1px solid #263043;
-    transition:.3s;
-
-}
-
-
-.highlight-card:hover{
-
-    transform:translateY(-8px);
-    border-color:#0d6efd;
-
-}
-
-
-.highlight-card h3{
-
-    color:#0d6efd;
-
-}
-
-
-
-
-
-
 /* Cards */
 
 
-.card{
 .card,
-.skill-box,
-.highlight-card{
+.project-card,
+.highlight-card,
+.skill-box{
 
-    background:#1E293B;
-    border:1px solid #334155;
+    background:var(--card);
     color:white;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    transition:.3s;
 
 }
 
 
 
-.card:hover{
+.card:hover,
+.project-card:hover,
+.highlight-card:hover{
 
     transform:translateY(-8px);
 
-}
+    border-color:var(--accent);
 
-
-.service-card,
-.project-card{
-
-    transition:.3s;
-    overflow:hidden;
+    box-shadow:
+    0 15px 35px rgba(250,204,21,.20);
 
 }
 
-
-.service-card:hover,
-.project-card:hover{
-
-    box-shadow:0 20px 40px rgba(0,0,0,.4);
-
-}
-
-
-
-
-
-
-.card-img-top{
-
-    height:230px;
-    object-fit:cover;
-
-}
 
 
 
@@ -229,21 +267,76 @@ body{
 
 .skill-box{
 
-    background:#111827;
     padding:25px;
-    border-radius:15px;
     height:100%;
-    border:1px solid #263043;
 
 }
-
 
 
 .skill-box h5{
 
-    color:#0d6efd;
+    color:var(--accent);
 
 }
+
+
+
+
+
+/* Project Cards */
+
+
+.project-card{
+
+    overflow:hidden;
+
+}
+
+
+
+.card-body{
+
+    padding:25px;
+
+}
+
+
+
+.card-title,
+.card-body h4{
+
+    color:var(--accent);
+
+}
+
+
+
+
+
+/* Project Images */
+
+
+.carousel img{
+
+    width:100%;
+    height:240px;
+    object-fit:cover;
+
+}
+
+
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+
+    background-color:var(--primary);
+    border-radius:50%;
+    padding:15px;
+
+}
+
 
 
 
@@ -258,12 +351,14 @@ body{
 }
 
 
+
 .project-features li{
 
     margin-bottom:8px;
-    color:#ccc;
+    color:var(--muted);
 
 }
+
 
 
 
@@ -275,38 +370,27 @@ body{
 .tech-stack span{
 
     display:inline-block;
-    background:#1f2937;
-    color:#fff;
+
+    background:var(--primary);
+
+    color:white;
+
     padding:6px 12px;
+
     border-radius:20px;
+
     margin:4px;
+
     font-size:13px;
 
 }
 
 
 
+.tech-stack span:hover{
 
-
-/* Carousel */
-
-
-.carousel img{
-
-    height:240px;
-    object-fit:cover;
-
-}
-
-
-
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon{
-
-    background-color:#000;
-    border-radius:50%;
-    padding:15px;
+    background:var(--accent);
+    color:#000;
 
 }
 
@@ -314,35 +398,35 @@ body{
 
 
 
+/* Filter Buttons */
 
 
-/* Buttons */
+.filter-btn{
 
-
-.btn{
-
-    border-radius:30px;
+    margin:5px;
 
 }
 
 
-.btn-primary{
+.filter-btn:hover{
 
-    background:#8B5CF6;
-    border-color:#8B5CF6;
-
-}
-
-
-.btn-primary:hover{
-
-    background:#7C3AED;
-    border-color:#7C3AED;
+    background:var(--accent);
+    color:black;
 
 }
+
+
+
 
 
 /* Contact */
+
+
+#contact{
+
+    background:#0b0b0b;
+
+}
 
 
 .contact-links a{
@@ -356,14 +440,19 @@ body{
 
 
 
+
 /* Footer */
 
 
 footer{
 
+    background:#000;
+
     padding:25px;
-    background:#050810;
+
     color:#aaa;
+
+    text-align:center;
 
 }
 
@@ -371,9 +460,7 @@ footer{
 
 
 
-
-
-/* Mobile */
+/* Mobile Responsive */
 
 
 @media(max-width:768px){
@@ -386,10 +473,18 @@ footer{
 }
 
 
+.hero h2{
+
+    font-size:32px;
+
+}
+
+
 .profile-img{
 
     width:220px;
     height:220px;
+
     margin-top:40px;
 
 }
@@ -398,6 +493,13 @@ footer{
 .section h2{
 
     font-size:32px;
+
+}
+
+
+.carousel img{
+
+    height:200px;
 
 }
 
