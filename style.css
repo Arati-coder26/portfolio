@@ -1,1 +1,394 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+    background:#0b0f19;
+    color:#fff;
+
+}
+
+
+/* Navbar */
+
+.navbar{
+
+    background:rgba(11,15,25,0.9);
+    backdrop-filter:blur(10px);
+
+}
+
+
+.navbar .nav-link{
+
+    color:#fff;
+    margin-left:15px;
+
+}
+
+
+.navbar .nav-link:hover{
+
+    color:#0d6efd;
+
+}
+
+
+
+
+/* Sections */
+
+.section{
+
+    padding:90px 0;
+
+}
+
+
+.section h2{
+
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+    font-weight:700;
+
+}
+
+
+
+
+/* Hero */
+
+.hero{
+
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+
+}
+
+
+
+.hero h1{
+
+    font-size:70px;
+
+}
+
+
+
+.hero p{
+
+    color:#c7c7c7;
+
+}
+
+
+
+.profile-img{
+
+    width:320px;
+    height:320px;
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid #0d6efd;
+    box-shadow:0 0 40px rgba(13,110,253,.5);
+
+}
+
+
+
+
+
+/* Social Icons */
+
+
+.social{
+
+    display:inline-flex;
+    width:45px;
+    height:45px;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#111827;
+    color:white;
+    font-size:22px;
+    margin-right:10px;
+    transition:.3s;
+
+}
+
+
+.social:hover{
+
+    background:#0d6efd;
+    transform:translateY(-5px);
+
+}
+
+
+
+
+
+/* Highlight Cards */
+
+
+.highlight-card{
+
+    background:#111827;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #263043;
+    transition:.3s;
+
+}
+
+
+.highlight-card:hover{
+
+    transform:translateY(-8px);
+    border-color:#0d6efd;
+
+}
+
+
+.highlight-card h3{
+
+    color:#0d6efd;
+
+}
+
+
+
+
+
+
+/* Cards */
+
+
+.card{
+
+    background:#111827;
+    color:white;
+    border:none;
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.service-card,
+.project-card{
+
+    transition:.3s;
+    overflow:hidden;
+
+}
+
+
+.service-card:hover,
+.project-card:hover{
+
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+
+}
+
+
+
+
+
+
+.card-img-top{
+
+    height:230px;
+    object-fit:cover;
+
+}
+
+
+
+
+
+/* Skills */
+
+
+.skill-box{
+
+    background:#111827;
+    padding:25px;
+    border-radius:15px;
+    height:100%;
+    border:1px solid #263043;
+
+}
+
+
+
+.skill-box h5{
+
+    color:#0d6efd;
+
+}
+
+
+
+
+/* Project Features */
+
+
+.project-features{
+
+    padding-left:20px;
+
+}
+
+
+.project-features li{
+
+    margin-bottom:8px;
+    color:#ccc;
+
+}
+
+
+
+
+
+/* Technology Tags */
+
+
+.tech-stack span{
+
+    display:inline-block;
+    background:#1f2937;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    margin:4px;
+    font-size:13px;
+
+}
+
+
+
+
+
+/* Carousel */
+
+
+.carousel img{
+
+    height:240px;
+    object-fit:cover;
+
+}
+
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+
+    background-color:#000;
+    border-radius:50%;
+    padding:15px;
+
+}
+
+
+
+
+
+
+
+/* Buttons */
+
+
+.btn{
+
+    border-radius:30px;
+
+}
+
+
+
+
+
+/* Contact */
+
+
+.contact-links a{
+
+    margin:8px;
+
+}
+
+
+
+
+
+
+/* Footer */
+
+
+footer{
+
+    padding:25px;
+    background:#050810;
+    color:#aaa;
+
+}
+
+
+
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:768px){
+
+
+.hero h1{
+
+    font-size:45px;
+
+}
+
+
+.profile-img{
+
+    width:220px;
+    height:220px;
+    margin-top:40px;
+
+}
+
+
+.section h2{
+
+    font-size:32px;
+
+}
+
+
+}
