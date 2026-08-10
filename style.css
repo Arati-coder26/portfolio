@@ -585,3 +585,57 @@ footer{
 
 
 }
+/* =========================
+   STAR CASE STUDY MODAL
+========================= */
+
+#qeCaseStudy .modal-content {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+#qeCaseStudy .modal-header,
+#qeCaseStudy .modal-body,
+#qeCaseStudy .modal-footer {
+    color: #212529;
+}
+
+#qeCaseStudy .modal-title {
+    color: #212529;
+}
+
+#qeCaseStudy p,
+#qeCaseStudy li {
+    color: #495057;
+}
+
+#qeCaseStudy h5,
+#qeCaseStudy h6 {
+    color: #212529;
+}
+
+#qeCaseStudy .star-item {
+    margin-bottom: 25px;
+}
+
+#qeCaseStudy .star-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background-color: #0d6efd;
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+#qeCaseStudy .tech-stack span {
+    color: #212529;
+}
