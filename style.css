@@ -1,4 +1,4 @@
-```css
+
 /* =========================================================
    ARATI CHOUDHARY PORTFOLIO
    HOME + PROJECTS
@@ -808,6 +808,268 @@ footer {
 
     border-top: 1px solid #e9ecef;
 }
+```css
+/* =========================================================
+   STAR CASE STUDY MODALS
+========================================================= */
+
+.star-case-study .modal-dialog {
+    max-width: 850px;
+}
+
+.star-case-study .modal-content {
+    background: #111111 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.star-case-study .modal-header {
+    background: #111111 !important;
+
+    border-bottom: 1px solid #2a2a2a;
+
+    padding: 24px 28px;
+}
+
+.star-case-study .modal-title {
+    color: #facc15 !important;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.star-case-study .btn-close {
+    filter: invert(1);
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.star-case-study .modal-body {
+    background: #111111 !important;
+
+    color: #ffffff !important;
+
+    padding: 30px;
+}
+
+
+/* Normal paragraph text */
+
+.star-case-study .modal-body p {
+    color: #b8b8b8 !important;
+
+    line-height: 1.75;
+
+    margin-bottom: 0;
+}
+
+
+/* Lists */
+
+.star-case-study .modal-body ul {
+    padding-left: 22px;
+}
+
+.star-case-study .modal-body li {
+    color: #b8b8b8 !important;
+
+    line-height: 1.7;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================================================
+   STAR HEADINGS
+========================================================= */
+
+.star-item {
+    margin-bottom: 30px;
+}
+
+.star-item:last-child {
+    margin-bottom: 0;
+}
+
+.star-item h5 {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+    color: #ffffff !important;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STAR LETTER
+========================================================= */
+
+.star-letter {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #facc15 !important;
+
+    color: #000000 !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TECHNOLOGY
+========================================================= */
+
+.star-case-study .modal-body h6 {
+    color: #facc15 !important;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.star-case-study .modal-body .tech-stack {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.star-case-study .modal-body .tech-stack span {
+    display: inline-block;
+
+    margin: 0;
+
+    padding: 7px 13px;
+
+    background: #222222 !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #333333;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.star-case-study .modal-body .tech-stack span:hover {
+    background: #facc15 !important;
+
+    color: #000000 !important;
+
+    border-color: #facc15;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.star-case-study .modal-footer {
+    background: #111111 !important;
+
+    color: #ffffff !important;
+
+    border-top: 1px solid #2a2a2a;
+
+    padding: 18px 28px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .star-case-study .modal-dialog {
+        margin: 12px;
+    }
+
+    .star-case-study .modal-header {
+        padding: 20px;
+    }
+
+    .star-case-study .modal-body {
+        padding: 22px 20px;
+    }
+
+    .star-case-study .modal-footer {
+        padding: 15px 20px;
+    }
+
+    .star-case-study .modal-title {
+        font-size: 23px;
+    }
+
+    .star-item h5 {
+        font-size: 17px;
+    }
+
+    .star-letter {
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .star-case-study .modal-dialog {
+        margin: 6px;
+    }
+
+    .star-case-study .modal-header {
+        padding: 18px 16px;
+    }
+
+    .star-case-study .modal-body {
+        padding: 20px 16px;
+    }
+
+    .star-case-study .modal-footer {
+        padding: 14px 16px;
+    }
+}
+```
 
 
 /* =========================================================
