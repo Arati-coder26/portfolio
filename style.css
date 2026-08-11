@@ -923,4 +923,74 @@ footer{
 
     
     
+
+/* =========================================================
+   FORCE STAR CASE STUDY TEXT COLORS
+   Put this at the VERY END of style.css
+========================================================= */
+
+.modal.star-case-study .modal-content {
+    background: #ffffff !important;
+}
+
+/* Force ALL text elements inside the case study to dark */
+.modal.star-case-study .modal-content p,
+.modal.star-case-study .modal-content li,
+.modal.star-case-study .modal-content h1,
+.modal.star-case-study .modal-content h2,
+.modal.star-case-study .modal-content h3,
+.modal.star-case-study .modal-content h4,
+.modal.star-case-study .modal-content h5,
+.modal.star-case-study .modal-content h6,
+.modal.star-case-study .modal-content span,
+.modal.star-case-study .modal-content div {
+    color: #212529 !important;
+}
+
+/* STAR description text */
+.modal.star-case-study .modal-body p,
+.modal.star-case-study .modal-body li {
+    color: #495057 !important;
+}
+
+/* STAR headings */
+.modal.star-case-study .modal-body h5,
+.modal.star-case-study .modal-body h6 {
+    color: #212529 !important;
+}
+
+/* STAR circles must remain white */
+.modal.star-case-study .star-letter {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+/* Badges */
+.modal.star-case-study .badge {
+    color: #ffffff !important;
+}
+
+.modal.star-case-study .badge.bg-warning {
+    color: #212529 !important;
+}
+
+/* Technology badges */
+.modal.star-case-study .tech-stack span {
+    background-color: #f1f5f9 !important;
+    color: #212529 !important;
+}
+
+/* Modal header/footer */
+.modal.star-case-study .modal-header,
+.modal.star-case-study .modal-body,
+.modal.star-case-study .modal-footer {
+    background-color: #ffffff !important;
+}
+
+/* Footer links/buttons */
+.modal.star-case-study .modal-footer a,
+.modal.star-case-study .modal-footer button {
+    color: inherit;
+}
+
     
