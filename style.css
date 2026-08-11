@@ -581,7 +581,7 @@ footer{
 
     height:200px;
     
-}```css
+}
 /* =========================================================
    STAR CASE STUDY MODALS
 ========================================================= */
@@ -774,6 +774,83 @@ footer{
 .project-card .btn:hover {
     transform: translateY(-2px);
 }
+```css
+/* =========================================================
+   STAR CASE STUDY - TEXT COLOR FIX
+========================================================= */
+
+/* Modal content */
+.star-case-study .modal-content {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+/* Modal header */
+.star-case-study .modal-header {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+/* Modal title */
+.star-case-study .modal-title {
+    color: #212529 !important;
+}
+
+/* Modal body */
+.star-case-study .modal-body {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+/* All normal text inside modal */
+.star-case-study .modal-body p {
+    color: #495057 !important;
+}
+
+/* STAR headings */
+.star-case-study .modal-body h5 {
+    color: #212529 !important;
+}
+
+/* Technology heading */
+.star-case-study .modal-body h6 {
+    color: #212529 !important;
+}
+
+/* Lists */
+.star-case-study .modal-body ul {
+    color: #495057 !important;
+}
+
+.star-case-study .modal-body li {
+    color: #495057 !important;
+}
+
+/* STAR letter */
+.star-case-study .star-letter {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+/* Technology badges */
+.star-case-study .tech-stack span {
+    background-color: #f1f5f9 !important;
+    color: #212529 !important;
+    border-color: #dee2e6 !important;
+}
+
+/* Modal footer */
+.star-case-study .modal-footer {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+/* Footer buttons/text */
+.star-case-study .modal-footer button,
+.star-case-study .modal-footer a {
+    color: inherit;
+}
+```
 
 
 /* =========================================================
