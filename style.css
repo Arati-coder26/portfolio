@@ -1,32 +1,23 @@
-
 /* =========================================================
    ARATI CHOUDHARY PORTFOLIO
    HOME + PROJECTS
-========================================================= */
-
-
-/* =========================================================
-   ROOT VARIABLES
+   Bootstrap 5 compatible
 ========================================================= */
 
 :root {
-    --primary: #FACC15;
-    --primary-dark: #eab308;
+    --yellow: #facc15;
+    --yellow-dark: #eab308;
 
-    --dark: #050505;
-    --section-dark: #0a0a0a;
+    --black: #050505;
+    --dark: #0a0a0a;
     --card: #111111;
-
-    --border: #2a2a2a;
-
-    --text: #ffffff;
-    --muted: #b8b8b8;
+    --card-light: #181818;
 
     --white: #ffffff;
-    --black: #000000;
+    --text: #f5f5f5;
+    --muted: #b8b8b8;
 
-    --success: #198754;
-    --danger: #dc3545;
+    --border: #292929;
 }
 
 
@@ -35,8 +26,6 @@
 ========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -45,18 +34,26 @@ html {
 }
 
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--dark);
-    color: var(--text);
-    overflow-x: hidden;
-}
+    margin: 0;
+    padding: 0;
 
-img {
-    max-width: 100%;
+    background: var(--black);
+    color: var(--text);
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
 }
 
 a {
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
 }
 
 button {
@@ -69,25 +66,23 @@ button {
 ========================================================= */
 
 .navbar {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.96);
 
-    padding: 15px 0;
+    padding: 14px 0;
 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 9999;
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navbar-brand {
     color: var(--white) !important;
-    font-size: 28px;
+
     font-weight: 700;
 }
 
-.navbar-brand span {
-    color: var(--primary);
+.navbar-brand .text-primary {
+    color: var(--yellow) !important;
 }
 
 .nav-link {
@@ -95,22 +90,25 @@ button {
 
     margin-left: 15px;
 
-    font-weight: 500;
-
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary) !important;
+    color: var(--yellow) !important;
 }
 
-.nav-link.btn-primary {
-    color: var(--black) !important;
+.navbar .btn-primary {
+    color: #000 !important;
 }
+
+
+/* =========================================================
+   NAVBAR MOBILE
+========================================================= */
 
 .navbar-toggler {
-    border: 1px solid var(--primary);
+    border-color: var(--yellow);
 }
 
 .navbar-toggler:focus {
@@ -121,30 +119,48 @@ button {
     filter:
         brightness(0)
         saturate(100%)
-        invert(83%)
-        sepia(90%)
-        saturate(1000%);
+        invert(84%)
+        sepia(98%)
+        saturate(1000%)
+        hue-rotate(355deg)
+        brightness(104%);
 }
 
 
 /* =========================================================
-   CONTACT BUTTON
+   GENERAL SECTIONS
 ========================================================= */
 
-.contact-btn {
-    background: var(--primary);
-    color: var(--black) !important;
-
-    padding: 8px 22px !important;
-
-    border-radius: 25px;
-
-    transition: 0.3s;
+.section {
+    padding: 100px 0;
 }
 
-.contact-btn:hover {
-    background: var(--white);
-    color: var(--black) !important;
+.section h1,
+.section h2,
+.section h3,
+.section h4 {
+    color: var(--white);
+}
+
+.section-tag {
+    display: inline-block;
+
+    color: var(--yellow);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.section-description {
+    max-width: 720px;
+
+    margin: 15px auto 0;
+
+    color: var(--muted);
+
+    line-height: 1.7;
 }
 
 
@@ -172,24 +188,31 @@ button {
 }
 
 .hero h1 {
+    color: var(--white);
+
     font-size: 70px;
     font-weight: 800;
+
     line-height: 1.1;
 }
 
 .hero h2 {
-    font-size: 45px;
-    line-height: 1.2;
+    color: var(--white);
+
+    font-size: 42px;
+    font-weight: 700;
 }
 
 .hero p {
-    color: var(--muted);
     max-width: 650px;
-    line-height: 1.7;
+
+    color: var(--muted);
+
+    line-height: 1.8;
 }
 
 .text-primary {
-    color: var(--primary) !important;
+    color: var(--yellow) !important;
 }
 
 
@@ -205,245 +228,60 @@ button {
 
     border-radius: 50%;
 
-    border: 6px solid var(--primary);
+    border: 5px solid var(--yellow);
 
     box-shadow:
-        0 0 40px rgba(250, 204, 21, 0.4);
+        0 0 40px rgba(250, 204, 21, 0.35);
 }
 
 
 /* =========================================================
-   GENERAL SECTIONS
+   BUTTONS
 ========================================================= */
 
-.section {
-    padding: 90px 0;
+.btn-primary {
+    background: var(--yellow) !important;
+
+    border-color: var(--yellow) !important;
+
+    color: #000 !important;
+
+    font-weight: 600;
 }
 
-.section h2 {
-    text-align: center;
+.btn-primary:hover {
+    background: var(--white) !important;
 
-    font-size: 42px;
-    font-weight: 700;
+    border-color: var(--white) !important;
 
-    color: var(--primary);
-
-    margin-bottom: 50px;
+    color: #000 !important;
 }
 
-.section-tag {
-    display: inline-block;
+.btn-outline-primary {
+    color: var(--yellow) !important;
 
-    color: var(--primary);
-
-    font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
+    border-color: var(--yellow) !important;
 }
 
-.section-description {
-    max-width: 700px;
+.btn-outline-primary:hover {
+    background: var(--yellow) !important;
 
-    margin: 15px auto 0;
+    border-color: var(--yellow) !important;
 
-    color: var(--muted);
-
-    line-height: 1.7;
+    color: #000 !important;
 }
 
 
 /* =========================================================
-   GENERAL CARDS
+   PROJECT PAGE
 ========================================================= */
 
-.card,
-.project-card,
-.skill-box,
-.highlight-card {
-    background: var(--card);
+.projects-page {
+    padding-top: 140px;
 
-    color: var(--text);
+    min-height: 100vh;
 
-    border: 1px solid var(--border);
-
-    border-radius: 15px;
-
-    transition: 0.3s;
-}
-
-.card:hover,
-.project-card:hover,
-.skill-box:hover,
-.highlight-card:hover {
-    transform: translateY(-8px);
-
-    border-color: var(--primary);
-
-    box-shadow:
-        0 15px 35px rgba(250, 204, 21, 0.2);
-}
-
-.card-body {
-    padding: 25px;
-}
-
-.card h4,
-.card h5,
-.card-title {
-    color: var(--primary);
-}
-
-
-/* =========================================================
-   SKILLS
-========================================================= */
-
-.skill-box {
-    padding: 25px;
-    height: 100%;
-}
-
-.skill-box p {
-    color: var(--muted);
-}
-
-
-/* =========================================================
-   PROJECTS PAGE
-========================================================= */
-
-.project-card {
-    overflow: hidden;
-
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card .card-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card .card-body > .btn {
-    align-self: flex-start;
-}
-
-.project-card h4 {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-.project-card p {
-    color: var(--muted);
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   PROJECT IMAGES / CAROUSEL
-========================================================= */
-
-.carousel img {
-    width: 100%;
-    height: 240px;
-
-    object-fit: cover;
-}
-
-.project-card .carousel {
-    background: #080808;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    width: 12%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: var(--primary);
-
-    border-radius: 50%;
-
-    width: 36px;
-    height: 36px;
-}
-
-
-/* =========================================================
-   PROJECT FEATURES
-========================================================= */
-
-.project-features {
-    padding-left: 20px;
-
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.project-features li {
-    color: var(--muted);
-
-    margin-bottom: 8px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   PROJECT BADGES
-========================================================= */
-
-.project-card .badge {
-    align-self: flex-start;
-
-    font-size: 12px;
-
-    padding: 7px 10px;
-}
-
-
-/* =========================================================
-   TECHNOLOGY TAGS
-========================================================= */
-
-.tech-stack {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 4px;
-
-    margin-top: 10px;
-}
-
-.tech-stack span {
-    display: inline-block;
-
-    background: #222;
-
-    color: var(--white);
-
-    border: 1px solid #333;
-
-    padding: 6px 12px;
-
-    border-radius: 20px;
-
-    font-size: 13px;
-
-    transition: 0.25s;
-}
-
-.tech-stack span:hover {
-    background: var(--primary);
-
-    color: var(--black);
-
-    border-color: var(--primary);
+    background: var(--black);
 }
 
 
@@ -455,7 +293,6 @@ button {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     flex-wrap: wrap;
@@ -464,11 +301,11 @@ button {
 }
 
 .filter-btn {
+    border-radius: 30px;
+
     min-width: 95px;
 
-    border-radius: 25px;
-
-    transition: 0.25s;
+    transition: 0.25s ease;
 }
 
 .filter-btn:hover {
@@ -477,12 +314,176 @@ button {
 
 
 /* =========================================================
-   HIDDEN PROJECTS
-   Used by Load More
+   PROJECT GRID
 ========================================================= */
 
-.project-item.project-hidden {
-    display: none;
+.project-item {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
+.project-card {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--card) !important;
+
+    color: var(--text) !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 14px !important;
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--yellow) !important;
+
+    box-shadow:
+        0 15px 35px rgba(250, 204, 21, 0.15);
+}
+
+
+/* =========================================================
+   PROJECT CAROUSEL
+========================================================= */
+
+.project-card .carousel {
+    background: #000;
+}
+
+.project-card .carousel img {
+    width: 100%;
+
+    height: 240px;
+
+    object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 12%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.65);
+
+    border-radius: 50%;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   PROJECT CARD BODY
+========================================================= */
+
+.project-card .card-body {
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.project-card h4 {
+    color: var(--yellow) !important;
+
+    font-weight: 700;
+}
+
+.project-card p {
+    color: var(--muted) !important;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROJECT FEATURES
+========================================================= */
+
+.project-features {
+    margin: 15px 0;
+
+    padding-left: 20px;
+}
+
+.project-features li {
+    color: var(--muted) !important;
+
+    line-height: 1.55;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   TECH STACK
+========================================================= */
+
+.tech-stack {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 8px;
+}
+
+.tech-stack span {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    background: #222 !important;
+
+    color: var(--white) !important;
+
+    border: 1px solid #333;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+.tech-stack span:hover {
+    background: var(--yellow) !important;
+
+    color: #000 !important;
+
+    border-color: var(--yellow);
+}
+
+
+/* =========================================================
+   PROJECT BUTTONS
+========================================================= */
+
+.project-card .btn {
+    margin-top: 15px;
+
+    transition: 0.25s ease;
+}
+
+.project-card .btn:hover {
+    transform: translateY(-2px);
 }
 
 
@@ -499,46 +500,225 @@ button {
 .load-more-btn {
     min-width: 160px;
 
-    padding: 10px 25px;
-
-    border-radius: 25px;
-
-    font-weight: 600;
-
-    transition: 0.3s;
-}
-
-.load-more-btn:hover {
-    transform: translateY(-3px);
+    border-radius: 30px;
 }
 
 
 /* =========================================================
-   BUTTONS
+   HIDDEN PROJECTS
 ========================================================= */
 
-.btn-primary {
-    background: var(--primary);
-
-    border-color: var(--primary);
-
-    color: var(--black);
+.project-item.project-hidden {
+    display: none !important;
 }
 
-.btn-primary:hover {
-    background: var(--white);
 
-    border-color: var(--white);
+/* =========================================================
+   STAR CASE STUDY MODAL
+   IMPORTANT:
+   Bootstrap handles the modal.
+   We only style the inside.
+========================================================= */
 
-    color: var(--black);
+.star-case-study .modal-dialog {
+    max-width: 850px;
 }
 
-.project-card .btn {
-    transition: 0.25s;
+.star-case-study .modal-content {
+    background: #ffffff !important;
+
+    color: #212529 !important;
+
+    border: 0 !important;
+
+    border-radius: 14px !important;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
-.project-card .btn:hover {
-    transform: translateY(-2px);
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.star-case-study .modal-header {
+    background: #ffffff !important;
+
+    color: #212529 !important;
+
+    border-bottom: 1px solid #dee2e6 !important;
+
+    padding: 24px 28px;
+}
+
+.star-case-study .modal-header h3,
+.star-case-study .modal-header .modal-title {
+    color: #212529 !important;
+}
+
+.star-case-study .modal-header .btn-close {
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   MODAL BODY
+========================================================= */
+
+.star-case-study .modal-body {
+    background: #ffffff !important;
+
+    color: #212529 !important;
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   STAR ITEM
+========================================================= */
+
+.star-item {
+    margin-bottom: 30px;
+}
+
+.star-item:last-child {
+    margin-bottom: 0;
+}
+
+.star-item h5 {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+
+    color: #212529 !important;
+
+    font-size: 19px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STAR LETTER CIRCLE
+========================================================= */
+
+.star-letter {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--yellow) !important;
+
+    color: #000 !important;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STAR BODY TEXT
+========================================================= */
+
+.star-case-study .modal-body p {
+    color: #495057 !important;
+
+    background: transparent !important;
+
+    line-height: 1.75;
+
+    margin-bottom: 0;
+}
+
+.star-case-study .modal-body ul {
+    margin-bottom: 0;
+
+    padding-left: 22px;
+}
+
+.star-case-study .modal-body li {
+    color: #495057 !important;
+
+    background: transparent !important;
+
+    line-height: 1.7;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   STAR TECHNOLOGIES
+========================================================= */
+
+.star-case-study .modal-body h6 {
+    color: #212529 !important;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.star-case-study .modal-body .tech-stack {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.star-case-study .modal-body .tech-stack span {
+    background: #f1f3f5 !important;
+
+    color: #212529 !important;
+
+    border: 1px solid #dee2e6 !important;
+
+    border-radius: 6px;
+
+    padding: 7px 12px;
+
+    font-size: 13px;
+}
+
+.star-case-study .modal-body .tech-stack span:hover {
+    background: var(--yellow) !important;
+
+    color: #000 !important;
+
+    border-color: var(--yellow) !important;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.star-case-study .modal-footer {
+    background: #ffffff !important;
+
+    color: #212529 !important;
+
+    border-top: 1px solid #dee2e6 !important;
+
+    padding: 18px 28px;
 }
 
 
@@ -561,15 +741,15 @@ button {
 
     color: var(--white);
 
-    margin-right: 10px;
+    margin-right: 8px;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .social:hover {
-    background: var(--primary);
+    background: var(--yellow);
 
-    color: var(--black);
+    color: #000;
 
     transform: translateY(-3px);
 }
@@ -580,11 +760,11 @@ button {
 ========================================================= */
 
 #contact {
-    background: var(--section-dark);
+    background: var(--dark);
 }
 
 .contact-links a {
-    margin: 8px;
+    margin: 5px;
 }
 
 
@@ -593,273 +773,11 @@ button {
 ========================================================= */
 
 footer {
-    background: var(--black);
+    background: #000;
 
-    padding: 25px;
+    color: #888;
 
-    text-align: center;
-
-    color: #888888;
-   ```css
-/* =========================================================
-   STAR CASE STUDY MODALS
-========================================================= */
-
-.star-case-study .modal-dialog {
-    max-width: 850px;
-}
-
-.star-case-study .modal-content {
-    background: #111111 !important;
-    color: #ffffff !important;
-
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.star-case-study .modal-header {
-    background: #111111 !important;
-
-    border-bottom: 1px solid #2a2a2a;
-
-    padding: 24px 28px;
-}
-
-.star-case-study .modal-title {
-    color: #facc15 !important;
-
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.star-case-study .btn-close {
-    filter: invert(1);
-
-    opacity: 0.8;
-}
-
-
-/* =========================================================
-   BODY
-========================================================= */
-
-.star-case-study .modal-body {
-    background: #111111 !important;
-
-    color: #ffffff !important;
-
-    padding: 30px;
-}
-
-
-/* Normal paragraph text */
-
-.star-case-study .modal-body p {
-    color: #b8b8b8 !important;
-
-    line-height: 1.75;
-
-    margin-bottom: 0;
-}
-
-
-/* Lists */
-
-.star-case-study .modal-body ul {
-    padding-left: 22px;
-}
-
-.star-case-study .modal-body li {
-    color: #b8b8b8 !important;
-
-    line-height: 1.7;
-
-    margin-bottom: 9px;
-}
-
-
-/* =========================================================
-   STAR HEADINGS
-========================================================= */
-
-.star-item {
-    margin-bottom: 30px;
-}
-
-.star-item:last-child {
-    margin-bottom: 0;
-}
-
-.star-item h5 {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 12px;
-
-    color: #ffffff !important;
-
-    font-size: 19px;
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   STAR LETTER
-========================================================= */
-
-.star-letter {
-    width: 38px;
-    height: 38px;
-
-    min-width: 38px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #facc15 !important;
-
-    color: #000000 !important;
-
-    font-size: 15px;
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   TECHNOLOGY
-========================================================= */
-
-.star-case-study .modal-body h6 {
-    color: #facc15 !important;
-
-    font-size: 17px;
-
-    font-weight: 700;
-
-    margin-bottom: 12px;
-}
-
-.star-case-study .modal-body .tech-stack {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-}
-
-.star-case-study .modal-body .tech-stack span {
-    display: inline-block;
-
-    margin: 0;
-
-    padding: 7px 13px;
-
-    background: #222222 !important;
-
-    color: #ffffff !important;
-
-    border: 1px solid #333333;
-
-    border-radius: 6px;
-
-    font-size: 13px;
-}
-
-.star-case-study .modal-body .tech-stack span:hover {
-    background: #facc15 !important;
-
-    color: #000000 !important;
-
-    border-color: #facc15;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.star-case-study .modal-footer {
-    background: #111111 !important;
-
-    color: #ffffff !important;
-
-    border-top: 1px solid #2a2a2a;
-
-    padding: 18px 28px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .star-case-study .modal-dialog {
-        margin: 12px;
-    }
-
-    .star-case-study .modal-header {
-        padding: 20px;
-    }
-
-    .star-case-study .modal-body {
-        padding: 22px 20px;
-    }
-
-    .star-case-study .modal-footer {
-        padding: 15px 20px;
-    }
-
-    .star-case-study .modal-title {
-        font-size: 23px;
-    }
-
-    .star-item h5 {
-        font-size: 17px;
-    }
-
-    .star-letter {
-        width: 34px;
-        height: 34px;
-
-        min-width: 34px;
-    }
-}
-
-
-@media (max-width: 480px) {
-
-    .star-case-study .modal-dialog {
-        margin: 6px;
-    }
-
-    .star-case-study .modal-header {
-        padding: 18px 16px;
-    }
-
-    .star-case-study .modal-body {
-        padding: 20px 16px;
-    }
-
-    .star-case-study .modal-footer {
-        padding: 14px 16px;
-    }
+    padding: 25px 0;
 }
 
 
@@ -872,15 +790,15 @@ footer {
     .navbar-collapse {
         background: #111;
 
-        padding: 20px;
-
-        border-radius: 10px;
+        padding: 15px;
 
         margin-top: 10px;
+
+        border-radius: 10px;
     }
 
     .nav-link {
-        margin: 10px 0;
+        margin: 8px 0;
     }
 
 }
@@ -899,7 +817,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 45px;
+        font-size: 46px;
     }
 
     .hero h2 {
@@ -912,33 +830,23 @@ footer {
     }
 
     .profile-img {
-        width: 220px;
-        height: 220px;
+        width: 230px;
+        height: 230px;
 
         margin-top: 40px;
     }
 
     .section {
-        padding: 70px 0;
+        padding: 75px 0;
     }
 
-    .section h2 {
-        font-size: 32px;
+    .projects-page {
+        padding-top: 120px;
     }
 
-    .carousel img {
-        height: 200px;
+    .project-card .carousel img {
+        height: 210px;
     }
-
-    .project-filters {
-        gap: 8px;
-    }
-
-    .filter-btn {
-        min-width: auto;
-    }
-
-    /* STAR MODAL */
 
     .star-case-study .modal-dialog {
         margin: 12px;
@@ -956,32 +864,17 @@ footer {
         padding: 15px 20px;
     }
 
-    .star-case-study .modal-title {
-        font-size: 23px;
-    }
-
-    .star-item h5 {
-        font-size: 17px;
-    }
-
-    .star-letter {
-        width: 34px;
-        height: 34px;
-
-        min-width: 34px;
-    }
-
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 480px) {
 
     .navbar-brand {
-        font-size: 24px;
+        font-size: 24px !important;
     }
 
     .hero h1 {
@@ -997,27 +890,24 @@ footer {
         height: 190px;
     }
 
-    .section h2 {
-        font-size: 28px;
+    .project-filters {
+        gap: 7px;
     }
 
-    .card-body {
-        padding: 20px;
+    .filter-btn {
+        min-width: auto;
+
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     .project-card .card-body {
         padding: 20px;
     }
 
-    .project-filters {
-        gap: 6px;
+    .project-card .carousel img {
+        height: 190px;
     }
-
-    .filter-btn {
-        width: calc(50% - 6px);
-    }
-
-    /* STAR MODAL */
 
     .star-case-study .modal-dialog {
         margin: 6px;
@@ -1033,859 +923,6 @@ footer {
 
     .star-case-study .modal-footer {
         padding: 14px 16px;
-    }
-
-    .star-case-study .modal-footer .btn {
-        width: 100%;
-
-        margin: 3px 0;
-    }
-
-}
-```
-
-/* =====================
-   NAVBAR
-===================== */
-
-
-.navbar{
-
-    background:rgba(0,0,0,.95);
-    backdrop-filter:blur(10px);
-    padding:15px 0;
-    position:fixed;
-    width:100%;
-    top:0;
-    z-index:9999;
-
-}
-
-
-.navbar-brand{
-
-    color:white!important;
-    font-size:28px;
-    font-weight:700;
-
-}
-
-
-.navbar-brand span{
-
-    color:var(--primary);
-
-}
-
-
-.nav-link{
-
-    color:white!important;
-    margin-left:15px;
-    font-weight:500;
-    transition:.3s;
-
-}
-
-
-.nav-link:hover{
-
-    color:var(--primary)!important;
-
-}
-
-
-.contact-btn{
-
-    background:var(--primary);
-    color:#000!important;
-    padding:8px 22px!important;
-    border-radius:25px;
-
-}
-
-
-.contact-btn:hover{
-
-    background:white;
-    color:#000!important;
-
-}
-
-
-.navbar-toggler{
-
-    border:1px solid var(--primary);
-
-}
-
-
-.navbar-toggler-icon{
-
-    filter:
-    brightness(0)
-    saturate(100%)
-    invert(83%)
-    sepia(90%)
-    saturate(1000%);
-
-}
-
-
-/* =====================
- HERO
-===================== */
-.hero{
-    min-height:100vh;
-    padding:140px 0 80px;
-    display:flex;
-    align-items:center;
-}
-
-.hero{
-
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-
-    background:
-
-    linear-gradient(
-        rgba(0,0,0,.75),
-        rgba(0,0,0,.95)
-    ),
-
-    url("images/header-bg.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-}
-
-
-
-.hero h1{
-
-    font-size:70px;
-    font-weight:800;
-
-}
-
-
-.hero h2{
-
-    font-size:45px;
-
-}
-
-
-.hero p{
-
-    color:var(--muted);
-    max-width:650px;
-
-}
-
-
-.text-primary{
-
-    color:var(--primary)!important;
-
-}
-
-
-
-/* =====================
- PROFILE IMAGE
-===================== */
-
-
-.profile-img{
-
-    width:320px;
-    height:320px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:6px solid var(--primary);
-
-    box-shadow:
-    0 0 40px rgba(250,204,21,.4);
-
-}
-
-
-
-/* =====================
- SECTIONS
-===================== */
-
-
-.section{
-
-    padding:90px 0;
-
-}
-
-
-
-.section h2{
-
-    text-align:center;
-
-    font-size:42px;
-
-    font-weight:700;
-
-    color:var(--primary);
-
-    margin-bottom:50px;
-
-}
-
-
-
-/* =====================
- CARDS
-===================== */
-
-
-.card,
-.project-card,
-.skill-box,
-.highlight-card{
-
-    background:var(--card);
-
-    color:white;
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    transition:.3s;
-
-}
-
-
-
-.card:hover,
-.project-card:hover,
-.skill-box:hover,
-.highlight-card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:var(--primary);
-
-    box-shadow:
-
-    0 15px 35px rgba(250,204,21,.2);
-
-}
-
-
-
-.card-body{
-
-    padding:25px;
-
-}
-
-
-
-.card h4,
-.card h5,
-.card-title{
-
-    color:var(--primary);
-
-}
-
-
-
-/* =====================
- SKILLS
-===================== */
-
-
-.skill-box{
-
-    padding:25px;
-
-    height:100%;
-
-}
-
-
-.skill-box p{
-
-    color:var(--muted);
-
-}
-
-
-
-/* =====================
- PROJECTS
-===================== */
-
-
-.project-card{
-
-    overflow:hidden;
-
-}
-
-
-
-.carousel img{
-
-    width:100%;
-
-    height:240px;
-
-    object-fit:cover;
-
-}
-
-
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon{
-
-    background-color:var(--primary);
-
-    border-radius:50%;
-
-}
-
-
-
-.project-features{
-
-    padding-left:20px;
-
-}
-
-
-
-.project-features li{
-
-    color:var(--muted);
-
-    margin-bottom:8px;
-
-}
-
-
-
-/* =====================
- TECHNOLOGY TAGS
-===================== */
-
-
-.tech-stack span{
-
-    display:inline-block;
-
-    background:#222;
-
-    color:white;
-
-    border:1px solid #333;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    margin:4px;
-
-    font-size:13px;
-
-}
-
-
-
-.tech-stack span:hover{
-
-    background:var(--primary);
-
-    color:black;
-
-    border-color:var(--primary);
-
-}
-
-
-
-/* =====================
- BUTTONS
-===================== */
-
-
-.btn-primary{
-
-    background:var(--primary);
-
-    border-color:var(--primary);
-
-    color:black;
-
-}
-
-
-.btn-primary:hover{
-
-    background:white;
-
-    border-color:white;
-
-    color:black;
-
-}
-
-
-
-/* =====================
- SOCIAL
-===================== */
-
-
-.social{
-
-    width:45px;
-
-    height:45px;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#222;
-
-    color:white;
-
-    margin-right:10px;
-
-}
-
-
-.social:hover{
-
-    background:var(--primary);
-
-    color:black;
-
-}
-
-
-
-/* =====================
- CONTACT FOOTER
-===================== */
-
-
-#contact{
-
-    background:#0a0a0a;
-
-}
-
-
-.contact-links a{
-
-    margin:8px;
-
-}
-
-
-
-footer{
-
-    background:#000;
-
-    padding:25px;
-
-    text-align:center;
-
-    color:#888;
-
-}
-
-
-
-/* =====================
- MOBILE
-===================== */
-
-
-@media(max-width:991px){
-
-
-.navbar-collapse{
-
-    background:#111;
-
-    padding:20px;
-
-    border-radius:10px;
-
-}
-
-
-.nav-link{
-
-    margin:10px 0;
-
-}
-
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.hero h1{
-
-    font-size:45px;
-
-}
-
-
-.hero h2{
-
-    font-size:32px;
-
-}
-
-
-.profile-img{
-
-    width:220px;
-
-    height:220px;
-
-    margin-top:40px;
-
-}
-
-
-.section h2{
-
-    font-size:32px;
-
-}
-
-
-.carousel img{
-
-    height:200px;
-    
-}
-/* =========================================================
-   STAR CASE STUDY MODALS
-========================================================= */
-
-/* Modal */
-.star-case-study .modal-dialog {
-    max-width: 850px;
-}
-
-.star-case-study .modal-content {
-    background: #ffffff;
-    color: #212529;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-}
-
-
-/* =========================================================
-   MODAL HEADER
-========================================================= */
-
-.star-case-study .modal-header {
-    padding: 24px 28px;
-    background: #ffffff;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.star-case-study .modal-title {
-    color: #212529;
-    font-weight: 700;
-    font-size: 28px;
-}
-
-
-/* Close button */
-
-.star-case-study .btn-close {
-    opacity: 0.7;
-}
-
-.star-case-study .btn-close:hover {
-    opacity: 1;
-}
-
-
-/* =========================================================
-   MODAL BODY
-========================================================= */
-
-.star-case-study .modal-body {
-    padding: 30px;
-    background: #ffffff;
-    color: #495057;
-}
-
-
-/* Paragraphs */
-
-.star-case-study .modal-body p {
-    color: #495057;
-    line-height: 1.75;
-    margin-bottom: 0;
-}
-
-
-/* Lists */
-
-.star-case-study .modal-body ul {
-    padding-left: 22px;
-    margin-bottom: 0;
-}
-
-.star-case-study .modal-body li {
-    color: #495057;
-    line-height: 1.7;
-    margin-bottom: 9px;
-}
-
-
-/* =========================================================
-   STAR SECTIONS
-========================================================= */
-
-.star-item {
-    margin-bottom: 30px;
-}
-
-.star-item:last-child {
-    margin-bottom: 0;
-}
-
-
-/* STAR heading */
-
-.star-item h5 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    margin-bottom: 12px;
-
-    color: #212529;
-    font-size: 19px;
-    font-weight: 700;
-}
-
-
-/* STAR letter circle */
-
-.star-letter {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #0d6efd;
-    color: #ffffff !important;
-
-    font-size: 15px;
-    font-weight: 700;
-
-    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25);
-}
-
-
-/* =========================================================
-   TECHNOLOGY SECTION
-========================================================= */
-
-.star-case-study .modal-body h6 {
-    color: #212529;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-
-/* Technology badges */
-
-.star-case-study .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.star-case-study .tech-stack span {
-    display: inline-block;
-
-    padding: 7px 13px;
-
-    background: #f1f5f9;
-    color: #212529;
-
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
-
-    font-size: 13px;
-    font-weight: 500;
-}
-
-
-/* =========================================================
-   MODAL FOOTER
-========================================================= */
-
-.star-case-study .modal-footer {
-    padding: 18px 28px;
-
-    background: #ffffff;
-
-    border-top: 1px solid #e9ecef;
-}
-
-
-/* =========================================================
-   PROJECT CARD BUTTONS
-========================================================= */
-
-.project-card .btn {
-    transition: all 0.25s ease;
-}
-
-.project-card .btn:hover {
-    transform: translateY(-2px);
-}
-```css
-/* =========================================================
-   STAR CASE STUDY - TEXT COLOR FIX
-========================================================= */
-
-/* Modal content */
-.star-case-study .modal-content {
-    background-color: #ffffff !important;
-    color: #212529 !important;
-}
-
-/* Modal header */
-.star-case-study .modal-header {
-    background-color: #ffffff !important;
-    color: #212529 !important;
-}
-
-/* Modal title */
-.star-case-study .modal-title {
-    color: #212529 !important;
-}
-
-/* Modal body */
-.star-case-study .modal-body {
-    background-color: #ffffff !important;
-    color: #212529 !important;
-}
-
-/* All normal text inside modal */
-.star-case-study .modal-body p {
-    color: #495057 !important;
-}
-
-/* STAR headings */
-.star-case-study .modal-body h5 {
-    color: #212529 !important;
-}
-
-/* Technology heading */
-.star-case-study .modal-body h6 {
-    color: #212529 !important;
-}
-
-/* Lists */
-.star-case-study .modal-body ul {
-    color: #495057 !important;
-}
-
-.star-case-study .modal-body li {
-    color: #495057 !important;
-}
-
-/* STAR letter */
-.star-case-study .star-letter {
-    background-color: #0d6efd !important;
-    color: #ffffff !important;
-}
-
-/* Technology badges */
-.star-case-study .tech-stack span {
-    background-color: #f1f5f9 !important;
-    color: #212529 !important;
-    border-color: #dee2e6 !important;
-}
-
-/* Modal footer */
-.star-case-study .modal-footer {
-    background-color: #ffffff !important;
-    color: #212529 !important;
-}
-
-/* Footer buttons/text */
-.star-case-study .modal-footer button,
-.star-case-study .modal-footer a {
-    color: inherit;
-}
-```
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 767px) {
-
-    .star-case-study .modal-dialog {
-        margin: 12px;
-    }
-
-    .star-case-study .modal-header {
-        padding: 20px;
-    }
-
-    .star-case-study .modal-body {
-        padding: 22px 20px;
-    }
-
-    .star-case-study .modal-footer {
-        padding: 15px 20px;
-    }
-
-    .star-case-study .modal-title {
-        font-size: 23px;
     }
 
     .star-item h5 {
@@ -1895,111 +932,8 @@ footer{
     .star-letter {
         width: 34px;
         height: 34px;
+
         min-width: 34px;
     }
 
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .star-case-study .modal-dialog {
-        margin: 6px;
-    }
-
-    .star-case-study .modal-body {
-        padding: 20px 16px;
-    }
-
-    .star-case-study .modal-header {
-        padding: 18px 16px;
-    }
-
-    .star-case-study .modal-footer {
-        padding: 14px 16px;
-    }
-
-    .star-case-study .modal-footer .btn {
-        width: 100%;
-        margin: 3px 0;
-    }
-
-}
-
-    
-    
-
-/* =========================================================
-   FORCE STAR CASE STUDY TEXT COLORS
-   Put this at the VERY END of style.css
-========================================================= */
-
-.modal.star-case-study .modal-content {
-    background: #ffffff !important;
-}
-
-/* Force ALL text elements inside the case study to dark */
-.modal.star-case-study .modal-content p,
-.modal.star-case-study .modal-content li,
-.modal.star-case-study .modal-content h1,
-.modal.star-case-study .modal-content h2,
-.modal.star-case-study .modal-content h3,
-.modal.star-case-study .modal-content h4,
-.modal.star-case-study .modal-content h5,
-.modal.star-case-study .modal-content h6,
-.modal.star-case-study .modal-content span,
-.modal.star-case-study .modal-content div {
-    color: #212529 !important;
-}
-
-/* STAR description text */
-.modal.star-case-study .modal-body p,
-.modal.star-case-study .modal-body li {
-    color: #495057 !important;
-}
-
-/* STAR headings */
-.modal.star-case-study .modal-body h5,
-.modal.star-case-study .modal-body h6 {
-    color: #212529 !important;
-}
-
-/* STAR circles must remain white */
-.modal.star-case-study .star-letter {
-    background-color: #0d6efd !important;
-    color: #ffffff !important;
-}
-
-/* Badges */
-.modal.star-case-study .badge {
-    color: #ffffff !important;
-}
-
-.modal.star-case-study .badge.bg-warning {
-    color: #212529 !important;
-}
-
-/* Technology badges */
-.modal.star-case-study .tech-stack span {
-    background-color: #f1f5f9 !important;
-    color: #212529 !important;
-}
-
-/* Modal header/footer */
-.modal.star-case-study .modal-header,
-.modal.star-case-study .modal-body,
-.modal.star-case-study .modal-footer {
-    background-color: #ffffff !important;
-}
-
-/* Footer links/buttons */
-.modal.star-case-study .modal-footer a,
-.modal.star-case-study .modal-footer button {
-    color: inherit;
-}
-
-    
