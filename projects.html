@@ -2680,19 +2680,18 @@
      LOAD MORE PROJECTS
 ========================= -->
 
-<div
-    id="loadMoreContainer"
-    class="text-center mt-5"
->
+
+<div class="text-center mt-5">
 
     <button
-        type="button"
         id="loadMoreBtn"
-        class="btn btn-primary px-4 py-2"
+        type="button"
+        class="btn btn-primary px-4"
     >
-        Load More Projects
+        Load More
     </button>
-</section>
+
+</div>
         
 
 <!-- =========================
@@ -2719,6 +2718,62 @@
 <!-- Custom JS -->
 
 <script src="script.js"></script>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+    const extraProjects = document.querySelectorAll(
+        ".load-more-project"
+    );
+
+    let projectsVisible = false;
+
+
+    /* Hide extra projects initially */
+
+    extraProjects.forEach(function (project) {
+        project.style.display = "none";
+    });
+
+
+    /* Load More / Show Less */
+
+    loadMoreBtn.addEventListener("click", function () {
+
+        projectsVisible = !projectsVisible;
+
+
+        extraProjects.forEach(function (project) {
+
+            project.style.display =
+                projectsVisible ? "" : "none";
+
+        });
+
+
+        if (projectsVisible) {
+
+            loadMoreBtn.textContent = "Show Less";
+
+        } else {
+
+            loadMoreBtn.textContent = "Load More";
+
+            document
+                .getElementById("projects")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+    });
+
+});
+
+    </script>
 
 </body>
 
