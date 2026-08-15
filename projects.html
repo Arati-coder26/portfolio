@@ -3237,59 +3237,7 @@
 
 <script src="script.js"></script>
     
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const loadMoreBtn = document.getElementById("loadMoreBtn");
-    const extraProjects = document.querySelectorAll(".load-more-project");
-
-    const projectsPerClick = 3;
-    let visibleProjects = 0;
-
-
-    // Hide all additional projects initially
-    extraProjects.forEach(function (project) {
-        project.style.display = "none";
-    });
-
-
-    loadMoreBtn.addEventListener("click", function () {
-
-        const nextLimit = visibleProjects + projectsPerClick;
-
-        for (
-            let i = visibleProjects;
-            i < nextLimit && i < extraProjects.length;
-            i++
-        ) {
-            extraProjects[i].style.display = "";
-        }
-
-        visibleProjects = Math.min(
-            nextLimit,
-            extraProjects.length
-        );
-
-
-        // Change button text when there are more projects
-        if (visibleProjects < extraProjects.length) {
-
-            const remaining = extraProjects.length - visibleProjects;
-
-            loadMoreBtn.innerHTML =
-                `Load More <span>(${Math.min(remaining, projectsPerClick)} more)</span>`;
-
-        } else {
-
-            // All projects are visible
-            loadMoreBtn.style.display = "none";
-
-        }
-
-    });
-
-});
-</script>
 </body>
 
 </html>
