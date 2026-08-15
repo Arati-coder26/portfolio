@@ -16,13 +16,11 @@ let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
-
 function typeEffect() {
 
     if (!typingElement) return;
 
     const currentText = textArray[textIndex];
-
 
     if (isDeleting) {
 
@@ -40,46 +38,34 @@ function typeEffect() {
 
     }
 
-
     let speed = isDeleting ? 50 : 100;
-
 
     // Finished typing
     if (!isDeleting && charIndex > currentText.length) {
 
         charIndex = currentText.length;
-
         isDeleting = true;
-
         speed = 1500;
 
     }
-
 
     // Finished deleting
     else if (isDeleting && charIndex < 0) {
 
         charIndex = 0;
-
         isDeleting = false;
 
         textIndex++;
 
         if (textIndex >= textArray.length) {
-
             textIndex = 0;
-
         }
 
         speed = 500;
-
     }
 
-
     setTimeout(typeEffect, speed);
-
 }
-
 
 typeEffect();
 
@@ -101,14 +87,15 @@ const loadMoreBtn =
     document.getElementById("loadMoreBtn");
 
 
+// Number of projects shown at a time
 const projectsPerClick = 3;
 
 
-// Currently selected category
+// Current selected filter
 let currentFilter = "all";
 
 
-// Number of projects currently visible
+// Number currently visible
 let visibleCount = projectsPerClick;
 
 
@@ -119,17 +106,14 @@ let visibleCount = projectsPerClick;
 
 function getFilteredProjects() {
 
+    if (currentFilter === "all") {
+
+        return projects;
+
+    }
+
     return projects.filter(function (project) {
 
-        // ALL PROJECTS
-        if (currentFilter === "all") {
-
-            return true;
-
-        }
-
-
-        // SELECTED CATEGORY
         return project.classList.contains(
             currentFilter
         );
@@ -150,9 +134,9 @@ function updateProjects() {
         getFilteredProjects();
 
 
-    // ---------------------------------------------
+    // -------------------------------------------------
     // Hide ALL projects first
-    // ---------------------------------------------
+    // -------------------------------------------------
 
     projects.forEach(function (project) {
 
@@ -161,9 +145,9 @@ function updateProjects() {
     });
 
 
-    // ---------------------------------------------
-    // Show only allowed number
-    // ---------------------------------------------
+    // -------------------------------------------------
+    // Show only the allowed number
+    // -------------------------------------------------
 
     filteredProjects.forEach(
         function (project, index) {
@@ -178,9 +162,9 @@ function updateProjects() {
     );
 
 
-    // ---------------------------------------------
-    // No projects found
-    // ---------------------------------------------
+    // -------------------------------------------------
+    // If there are no projects
+    // -------------------------------------------------
 
     if (
         !loadMoreBtn ||
@@ -198,9 +182,25 @@ function updateProjects() {
     }
 
 
-    // =================================================
+    // -------------------------------------------------
+    // Only 3 or fewer projects
+    // -------------------------------------------------
+
+    if (
+        filteredProjects.length <=
+        projectsPerClick
+    ) {
+
+        loadMoreBtn.style.display = "none";
+
+        return;
+
+    }
+
+
+    // -------------------------------------------------
     // MORE PROJECTS AVAILABLE
-    // =================================================
+    // -------------------------------------------------
 
     if (
         visibleCount <
@@ -223,20 +223,20 @@ function updateProjects() {
             );
 
 
-        loadMoreBtn.innerHTML =
-            `Load More <span>(${amount} more)</span>`;
+        loadMoreBtn.textContent =
+            `Load More (${amount} more)`;
 
 
-        loadMoreBtn.classList.remove(
-            "show-less"
-        );
+        // Store current action
+        loadMoreBtn.dataset.action =
+            "more";
 
     }
 
 
-    // =================================================
+    // -------------------------------------------------
     // ALL PROJECTS ARE VISIBLE
-    // =================================================
+    // -------------------------------------------------
 
     else {
 
@@ -244,13 +244,13 @@ function updateProjects() {
             "inline-block";
 
 
-        loadMoreBtn.innerHTML =
+        loadMoreBtn.textContent =
             "Show Less";
 
 
-        loadMoreBtn.classList.add(
-            "show-less"
-        );
+        // Store current action
+        loadMoreBtn.dataset.action =
+            "less";
 
     }
 
@@ -278,8 +278,8 @@ if (loadMoreBtn) {
             // -----------------------------------------
 
             if (
-                visibleCount >=
-                filteredProjects.length
+                loadMoreBtn.dataset.action ===
+                "less"
             ) {
 
                 visibleCount =
@@ -301,6 +301,18 @@ if (loadMoreBtn) {
                 projectsPerClick;
 
 
+            // Never exceed available projects
+            if (
+                visibleCount >
+                filteredProjects.length
+            ) {
+
+                visibleCount =
+                    filteredProjects.length;
+
+            }
+
+
             updateProjects();
 
         }
@@ -311,7 +323,7 @@ if (loadMoreBtn) {
 
 
 // =====================================================
-// FILTER BUTTONS
+// PROJECT FILTER BUTTONS
 // =====================================================
 
 filterButtons.forEach(function (button) {
@@ -322,7 +334,7 @@ filterButtons.forEach(function (button) {
 
 
             // -----------------------------------------
-            // Get selected filter
+            // Get selected category
             // -----------------------------------------
 
             currentFilter =
@@ -332,7 +344,7 @@ filterButtons.forEach(function (button) {
 
 
             // -----------------------------------------
-            // Reset to first 3 projects
+            // Start category from first 3
             // -----------------------------------------
 
             visibleCount =
@@ -394,7 +406,7 @@ updateProjects();
 
 
 // =====================================================
-// NAVBAR CLOSE ON MOBILE
+// MOBILE NAVBAR CLOSE
 // =====================================================
 
 const navLinks =
