@@ -23,6 +23,7 @@ function typeEffect() {
 
     const currentText = textArray[textIndex];
 
+
     if (isDeleting) {
 
         typingElement.textContent =
@@ -47,7 +48,9 @@ function typeEffect() {
     if (!isDeleting && charIndex > currentText.length) {
 
         charIndex = currentText.length;
+
         isDeleting = true;
+
         speed = 1500;
 
     }
@@ -57,12 +60,15 @@ function typeEffect() {
     else if (isDeleting && charIndex < 0) {
 
         charIndex = 0;
+
         isDeleting = false;
 
         textIndex++;
 
         if (textIndex >= textArray.length) {
+
             textIndex = 0;
+
         }
 
         speed = 500;
@@ -80,48 +86,53 @@ typeEffect();
 
 
 // =====================================================
-// PROJECT FILTER + LOAD MORE
+// PROJECT FILTER + LOAD MORE + SHOW LESS
 // =====================================================
 
 const filterButtons =
     document.querySelectorAll(".filter-btn");
 
 const projects =
-    Array.from(document.querySelectorAll(".project-item"));
+    Array.from(
+        document.querySelectorAll(".project-item")
+    );
 
 const loadMoreBtn =
     document.getElementById("loadMoreBtn");
 
 
-// Number of projects revealed each time
 const projectsPerClick = 3;
 
 
-// Currently selected filter
+// Currently selected category
 let currentFilter = "all";
 
 
-// Number currently visible
-let visibleCount = 3;
+// Number of projects currently visible
+let visibleCount = projectsPerClick;
 
 
 
 // =====================================================
-// GET CURRENT FILTERED PROJECTS
+// GET FILTERED PROJECTS
 // =====================================================
 
 function getFilteredProjects() {
 
     return projects.filter(function (project) {
 
-        // ALL
+        // ALL PROJECTS
         if (currentFilter === "all") {
+
             return true;
+
         }
 
 
-        // CATEGORY
-        return project.classList.contains(currentFilter);
+        // SELECTED CATEGORY
+        return project.classList.contains(
+            currentFilter
+        );
 
     });
 
@@ -130,7 +141,7 @@ function getFilteredProjects() {
 
 
 // =====================================================
-// UPDATE PROJECTS
+// UPDATE PROJECT DISPLAY
 // =====================================================
 
 function updateProjects() {
@@ -140,7 +151,7 @@ function updateProjects() {
 
 
     // ---------------------------------------------
-    // Hide every project
+    // Hide ALL projects first
     // ---------------------------------------------
 
     projects.forEach(function (project) {
@@ -151,37 +162,58 @@ function updateProjects() {
 
 
     // ---------------------------------------------
-    // Show ONLY current category
+    // Show only allowed number
     // ---------------------------------------------
 
-    filteredProjects.forEach(function (project, index) {
+    filteredProjects.forEach(
+        function (project, index) {
 
-        if (index < visibleCount) {
+            if (index < visibleCount) {
 
-            project.style.display = "";
+                project.style.display = "";
+
+            }
+
+        }
+    );
+
+
+    // ---------------------------------------------
+    // No projects found
+    // ---------------------------------------------
+
+    if (
+        !loadMoreBtn ||
+        filteredProjects.length === 0
+    ) {
+
+        if (loadMoreBtn) {
+
+            loadMoreBtn.style.display = "none";
 
         }
 
-    });
-
-
-    // ---------------------------------------------
-    // Load More button
-    // ---------------------------------------------
-
-    if (!loadMoreBtn) {
         return;
+
     }
 
 
-    // More projects available
-    if (visibleCount < filteredProjects.length) {
+    // =================================================
+    // MORE PROJECTS AVAILABLE
+    // =================================================
 
-        loadMoreBtn.style.display = "inline-block";
+    if (
+        visibleCount <
+        filteredProjects.length
+    ) {
+
+        loadMoreBtn.style.display =
+            "inline-block";
 
 
         const remaining =
-            filteredProjects.length - visibleCount;
+            filteredProjects.length -
+            visibleCount;
 
 
         const amount =
@@ -194,12 +226,31 @@ function updateProjects() {
         loadMoreBtn.innerHTML =
             `Load More <span>(${amount} more)</span>`;
 
+
+        loadMoreBtn.classList.remove(
+            "show-less"
+        );
+
     }
 
-    // Nothing more to show
+
+    // =================================================
+    // ALL PROJECTS ARE VISIBLE
+    // =================================================
+
     else {
 
-        loadMoreBtn.style.display = "none";
+        loadMoreBtn.style.display =
+            "inline-block";
+
+
+        loadMoreBtn.innerHTML =
+            "Show Less";
+
+
+        loadMoreBtn.classList.add(
+            "show-less"
+        );
 
     }
 
@@ -208,24 +259,52 @@ function updateProjects() {
 
 
 // =====================================================
-// LOAD MORE BUTTON
+// LOAD MORE / SHOW LESS BUTTON
 // =====================================================
 
 if (loadMoreBtn) {
 
-    loadMoreBtn.addEventListener("click", function () {
+    loadMoreBtn.addEventListener(
+        "click",
+        function () {
 
 
-        // IMPORTANT:
-        // This only increases the number of projects
-        // inside the CURRENT FILTER.
-
-        visibleCount += projectsPerClick;
+            const filteredProjects =
+                getFilteredProjects();
 
 
-        updateProjects();
+            // -----------------------------------------
+            // SHOW LESS
+            // -----------------------------------------
 
-    });
+            if (
+                visibleCount >=
+                filteredProjects.length
+            ) {
+
+                visibleCount =
+                    projectsPerClick;
+
+
+                updateProjects();
+
+                return;
+
+            }
+
+
+            // -----------------------------------------
+            // LOAD MORE
+            // -----------------------------------------
+
+            visibleCount +=
+                projectsPerClick;
+
+
+            updateProjects();
+
+        }
+    );
 
 }
 
@@ -237,68 +316,78 @@ if (loadMoreBtn) {
 
 filterButtons.forEach(function (button) {
 
-    button.addEventListener("click", function () {
+    button.addEventListener(
+        "click",
+        function () {
 
 
-        // ---------------------------------------------
-        // Get selected filter
-        // ---------------------------------------------
+            // -----------------------------------------
+            // Get selected filter
+            // -----------------------------------------
 
-        const selectedFilter =
-            button.getAttribute("data-filter");
-
-
-        // ---------------------------------------------
-        // Set current filter
-        // ---------------------------------------------
-
-        currentFilter = selectedFilter;
+            currentFilter =
+                button.getAttribute(
+                    "data-filter"
+                );
 
 
-        // ---------------------------------------------
-        // RESET TO FIRST 3
-        // ---------------------------------------------
+            // -----------------------------------------
+            // Reset to first 3 projects
+            // -----------------------------------------
 
-        visibleCount = projectsPerClick;
-
-
-        // ---------------------------------------------
-        // Update button appearance
-        // ---------------------------------------------
-
-        filterButtons.forEach(function (btn) {
-
-            btn.classList.remove("btn-primary");
-
-            btn.classList.add("btn-outline-primary");
-
-        });
+            visibleCount =
+                projectsPerClick;
 
 
-        button.classList.remove("btn-outline-primary");
+            // -----------------------------------------
+            // Update active button
+            // -----------------------------------------
 
-        button.classList.add("btn-primary");
+            filterButtons.forEach(
+                function (btn) {
+
+                    btn.classList.remove(
+                        "btn-primary"
+                    );
+
+                    btn.classList.add(
+                        "btn-outline-warning"
+                    );
+
+                }
+            );
 
 
-        // ---------------------------------------------
-        // Update projects
-        // ---------------------------------------------
+            button.classList.remove(
+                "btn-outline-warning"
+            );
 
-        updateProjects();
+            button.classList.add(
+                "btn-primary"
+            );
 
-    });
+
+            // -----------------------------------------
+            // Update projects
+            // -----------------------------------------
+
+            updateProjects();
+
+        }
+    );
 
 });
 
 
 
 // =====================================================
-// INITIAL STATE
+// INITIAL PROJECT DISPLAY
 // =====================================================
 
 currentFilter = "all";
 
-visibleCount = projectsPerClick;
+visibleCount =
+    projectsPerClick;
 
 updateProjects();
 
@@ -317,33 +406,41 @@ const navbarCollapse =
 
 navLinks.forEach(function (link) {
 
-    link.addEventListener("click", function () {
+    link.addEventListener(
+        "click",
+        function () {
 
-        if (
-            navbarCollapse &&
-            navbarCollapse.classList.contains("show")
-        ) {
 
-            const bsCollapse =
-                bootstrap.Collapse.getInstance(
-                    navbarCollapse
-                );
+            if (
+                navbarCollapse &&
+                navbarCollapse.classList.contains(
+                    "show"
+                )
+            ) {
 
-            if (bsCollapse) {
 
-                bsCollapse.hide();
+                const existingCollapse =
+                    bootstrap.Collapse.getInstance(
+                        navbarCollapse
+                    );
 
-            } else {
 
-                new bootstrap.Collapse(
-                    navbarCollapse
-                ).hide();
+                if (existingCollapse) {
+
+                    existingCollapse.hide();
+
+                } else {
+
+                    new bootstrap.Collapse(
+                        navbarCollapse
+                    ).hide();
+
+                }
 
             }
 
         }
-
-    });
+    );
 
 });
 
@@ -363,15 +460,23 @@ const observer =
     new IntersectionObserver(
         function (entries) {
 
-            entries.forEach(function (entry) {
 
-                if (entry.isIntersecting) {
+            entries.forEach(
+                function (entry) {
 
-                    entry.target.classList.add("show");
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
         {
@@ -380,10 +485,12 @@ const observer =
     );
 
 
-revealElements.forEach(function (element) {
+revealElements.forEach(
+    function (element) {
 
-    element.classList.add("hidden");
+        element.classList.add("hidden");
 
-    observer.observe(element);
+        observer.observe(element);
 
-});
+    }
+);
