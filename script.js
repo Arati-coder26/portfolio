@@ -1,30 +1,126 @@
+// =====================================================
+// TYPING ANIMATION
+// =====================================================
+
+const typingElement = document.getElementById("typing");
+
+const textArray = [
+    "Full Stack Developer",
+    "E-commerce Developer",
+    "Laravel & Vue Developer",
+    "React Developer",
+    "API & Backend Developer"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+
+function typeEffect() {
+
+    if (!typingElement) return;
+
+    const currentText = textArray[textIndex];
+
+    if (isDeleting) {
+
+        typingElement.textContent =
+            currentText.substring(0, charIndex);
+
+        charIndex--;
+
+    } else {
+
+        typingElement.textContent =
+            currentText.substring(0, charIndex);
+
+        charIndex++;
+
+    }
+
+
+    let speed = isDeleting ? 50 : 100;
+
+
+    // Finished typing
+    if (!isDeleting && charIndex > currentText.length) {
+
+        charIndex = currentText.length;
+        isDeleting = true;
+        speed = 1500;
+
+    }
+
+
+    // Finished deleting
+    else if (isDeleting && charIndex < 0) {
+
+        charIndex = 0;
+        isDeleting = false;
+
+        textIndex++;
+
+        if (textIndex >= textArray.length) {
+            textIndex = 0;
+        }
+
+        speed = 500;
+
+    }
+
+
+    setTimeout(typeEffect, speed);
+
+}
+
+
+typeEffect();
+
+
 
 // =====================================================
 // PROJECT FILTER + LOAD MORE
 // =====================================================
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projects = Array.from(document.querySelectorAll(".project-item"));
-const loadMoreBtn = document.getElementById("loadMoreBtn");
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
 
+const projects =
+    Array.from(document.querySelectorAll(".project-item"));
+
+const loadMoreBtn =
+    document.getElementById("loadMoreBtn");
+
+
+// Number of projects revealed each time
 const projectsPerClick = 3;
 
+
+// Currently selected filter
 let currentFilter = "all";
+
+
+// Number currently visible
 let visibleCount = 3;
 
 
+
 // =====================================================
-// GET PROJECTS FOR CURRENT FILTER
+// GET CURRENT FILTERED PROJECTS
 // =====================================================
 
 function getFilteredProjects() {
 
     return projects.filter(function (project) {
 
+        // ALL
         if (currentFilter === "all") {
             return true;
         }
 
+
+        // CATEGORY
         return project.classList.contains(currentFilter);
 
     });
@@ -32,16 +128,21 @@ function getFilteredProjects() {
 }
 
 
+
 // =====================================================
-// DISPLAY PROJECTS
+// UPDATE PROJECTS
 // =====================================================
 
 function updateProjects() {
 
-    const filteredProjects = getFilteredProjects();
+    const filteredProjects =
+        getFilteredProjects();
 
 
-    // Hide every project first
+    // ---------------------------------------------
+    // Hide every project
+    // ---------------------------------------------
+
     projects.forEach(function (project) {
 
         project.style.display = "none";
@@ -49,7 +150,10 @@ function updateProjects() {
     });
 
 
-    // Show ONLY projects belonging to current filter
+    // ---------------------------------------------
+    // Show ONLY current category
+    // ---------------------------------------------
+
     filteredProjects.forEach(function (project, index) {
 
         if (index < visibleCount) {
@@ -61,29 +165,39 @@ function updateProjects() {
     });
 
 
-    // =================================================
-    // LOAD MORE BUTTON
-    // =================================================
+    // ---------------------------------------------
+    // Load More button
+    // ---------------------------------------------
 
     if (!loadMoreBtn) {
         return;
     }
 
 
+    // More projects available
     if (visibleCount < filteredProjects.length) {
 
         loadMoreBtn.style.display = "inline-block";
 
+
         const remaining =
             filteredProjects.length - visibleCount;
 
+
         const amount =
-            Math.min(projectsPerClick, remaining);
+            Math.min(
+                projectsPerClick,
+                remaining
+            );
+
 
         loadMoreBtn.innerHTML =
             `Load More <span>(${amount} more)</span>`;
 
-    } else {
+    }
+
+    // Nothing more to show
+    else {
 
         loadMoreBtn.style.display = "none";
 
@@ -92,22 +206,29 @@ function updateProjects() {
 }
 
 
+
 // =====================================================
-// LOAD MORE
+// LOAD MORE BUTTON
 // =====================================================
 
 if (loadMoreBtn) {
 
     loadMoreBtn.addEventListener("click", function () {
 
-        // Add 3 projects from CURRENT FILTER only
+
+        // IMPORTANT:
+        // This only increases the number of projects
+        // inside the CURRENT FILTER.
+
         visibleCount += projectsPerClick;
+
 
         updateProjects();
 
     });
 
 }
+
 
 
 // =====================================================
@@ -118,31 +239,51 @@ filterButtons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-        // Get selected category
-        currentFilter =
+
+        // ---------------------------------------------
+        // Get selected filter
+        // ---------------------------------------------
+
+        const selectedFilter =
             button.getAttribute("data-filter");
 
 
-        // Reset to first 3
+        // ---------------------------------------------
+        // Set current filter
+        // ---------------------------------------------
+
+        currentFilter = selectedFilter;
+
+
+        // ---------------------------------------------
+        // RESET TO FIRST 3
+        // ---------------------------------------------
+
         visibleCount = projectsPerClick;
 
 
-        // Update active button
+        // ---------------------------------------------
+        // Update button appearance
+        // ---------------------------------------------
+
         filterButtons.forEach(function (btn) {
 
             btn.classList.remove("btn-primary");
 
-            btn.classList.add("btn-outline-warning");
+            btn.classList.add("btn-outline-primary");
 
         });
 
 
-        button.classList.remove("btn-outline-warning");
+        button.classList.remove("btn-outline-primary");
 
         button.classList.add("btn-primary");
 
 
-        // Display ONLY selected category
+        // ---------------------------------------------
+        // Update projects
+        // ---------------------------------------------
+
         updateProjects();
 
     });
@@ -150,16 +291,13 @@ filterButtons.forEach(function (button) {
 });
 
 
+
 // =====================================================
-// INITIAL DISPLAY
+// INITIAL STATE
 // =====================================================
 
-updateProjects();
-// =====================================================
-// INITIAL PROJECT DISPLAY
-// =====================================================
+currentFilter = "all";
 
-// Start with first 3 projects
 visibleCount = projectsPerClick;
 
 updateProjects();
@@ -186,9 +324,22 @@ navLinks.forEach(function (link) {
             navbarCollapse.classList.contains("show")
         ) {
 
-            new bootstrap.Collapse(
-                navbarCollapse
-            ).hide();
+            const bsCollapse =
+                bootstrap.Collapse.getInstance(
+                    navbarCollapse
+                );
+
+            if (bsCollapse) {
+
+                bsCollapse.hide();
+
+            } else {
+
+                new bootstrap.Collapse(
+                    navbarCollapse
+                ).hide();
+
+            }
 
         }
 
