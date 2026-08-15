@@ -1,119 +1,30 @@
-// =====================================================
-// TYPING ANIMATION
-// =====================================================
-
-const typingElement = document.getElementById("typing");
-
-const textArray = [
-    "Full Stack Developer",
-    "E-commerce Developer",
-    "Laravel & Vue Developer",
-    "React Developer",
-    "API & Backend Developer"
-];
-
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-
-function typeEffect() {
-
-    if (!typingElement) return;
-
-    const currentText = textArray[textIndex];
-
-
-    if (isDeleting) {
-
-        typingElement.textContent =
-            currentText.substring(0, charIndex--);
-
-    } else {
-
-        typingElement.textContent =
-            currentText.substring(0, charIndex++);
-
-    }
-
-
-    let speed = isDeleting ? 50 : 100;
-
-
-    // Finished typing
-    if (!isDeleting && charIndex === currentText.length) {
-
-        speed = 1500;
-        isDeleting = true;
-
-    }
-
-
-    // Finished deleting
-    else if (isDeleting && charIndex === 0) {
-
-        isDeleting = false;
-
-        textIndex++;
-
-        if (textIndex === textArray.length) {
-            textIndex = 0;
-        }
-
-        speed = 500;
-
-    }
-
-
-    setTimeout(typeEffect, speed);
-}
-
-
-typeEffect();
-
-
 
 // =====================================================
 // PROJECT FILTER + LOAD MORE
 // =====================================================
 
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projects = Array.from(document.querySelectorAll(".project-item"));
+const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-const projects =
-    Array.from(document.querySelectorAll(".project-item"));
-
-const loadMoreBtn =
-    document.getElementById("loadMoreBtn");
-
-
-// Number of projects shown per click
 const projectsPerClick = 3;
 
-
-// Current selected filter
 let currentFilter = "all";
-
-
-// Number of projects currently visible
-let visibleCount = projectsPerClick;
-
+let visibleCount = 3;
 
 
 // =====================================================
-// GET FILTERED PROJECTS
+// GET PROJECTS FOR CURRENT FILTER
 // =====================================================
 
 function getFilteredProjects() {
 
     return projects.filter(function (project) {
 
-        // Show every project
         if (currentFilter === "all") {
             return true;
         }
 
-        // Show only matching category
         return project.classList.contains(currentFilter);
 
     });
@@ -121,21 +32,16 @@ function getFilteredProjects() {
 }
 
 
-
 // =====================================================
-// UPDATE PROJECT DISPLAY
+// DISPLAY PROJECTS
 // =====================================================
 
 function updateProjects() {
 
-    const filteredProjects =
-        getFilteredProjects();
+    const filteredProjects = getFilteredProjects();
 
 
-    // ---------------------------------------------
-    // Hide ALL projects first
-    // ---------------------------------------------
-
+    // Hide every project first
     projects.forEach(function (project) {
 
         project.style.display = "none";
@@ -143,16 +49,11 @@ function updateProjects() {
     });
 
 
-    // ---------------------------------------------
-    // Show only the allowed number
-    // ---------------------------------------------
-
+    // Show ONLY projects belonging to current filter
     filteredProjects.forEach(function (project, index) {
 
         if (index < visibleCount) {
 
-            // Empty display lets Bootstrap
-            // control the grid layout
             project.style.display = "";
 
         }
@@ -160,35 +61,29 @@ function updateProjects() {
     });
 
 
-    // ---------------------------------------------
-    // Update Load More button
-    // ---------------------------------------------
+    // =================================================
+    // LOAD MORE BUTTON
+    // =================================================
 
-    if (!loadMoreBtn) return;
+    if (!loadMoreBtn) {
+        return;
+    }
 
 
-    // More projects available
     if (visibleCount < filteredProjects.length) {
 
         loadMoreBtn.style.display = "inline-block";
 
-
         const remaining =
             filteredProjects.length - visibleCount;
-
 
         const amount =
             Math.min(projectsPerClick, remaining);
 
-
         loadMoreBtn.innerHTML =
             `Load More <span>(${amount} more)</span>`;
 
-    }
-
-
-    // All projects are visible
-    else {
+    } else {
 
         loadMoreBtn.style.display = "none";
 
@@ -197,20 +92,17 @@ function updateProjects() {
 }
 
 
-
 // =====================================================
-// LOAD MORE BUTTON
+// LOAD MORE
 // =====================================================
 
 if (loadMoreBtn) {
 
     loadMoreBtn.addEventListener("click", function () {
 
-        // Add 3 more
+        // Add 3 projects from CURRENT FILTER only
         visibleCount += projectsPerClick;
 
-
-        // Refresh projects
         updateProjects();
 
     });
@@ -218,36 +110,24 @@ if (loadMoreBtn) {
 }
 
 
-
 // =====================================================
-// PROJECT FILTER BUTTONS
+// FILTER BUTTONS
 // =====================================================
 
 filterButtons.forEach(function (button) {
 
     button.addEventListener("click", function () {
 
-
-        // ---------------------------------------------
         // Get selected category
-        // ---------------------------------------------
-
         currentFilter =
             button.getAttribute("data-filter");
 
 
-        // ---------------------------------------------
-        // Reset to first 3 projects
-        // ---------------------------------------------
-
-        visibleCount =
-            projectsPerClick;
+        // Reset to first 3
+        visibleCount = projectsPerClick;
 
 
-        // ---------------------------------------------
         // Update active button
-        // ---------------------------------------------
-
         filterButtons.forEach(function (btn) {
 
             btn.classList.remove("btn-primary");
@@ -262,36 +142,19 @@ filterButtons.forEach(function (button) {
         button.classList.add("btn-primary");
 
 
-        // ---------------------------------------------
-        // Update projects
-        // ---------------------------------------------
-
+        // Display ONLY selected category
         updateProjects();
-
-
-        // ---------------------------------------------
-        // Scroll to projects section
-        // ---------------------------------------------
-
-        const projectsSection =
-            document.getElementById("projects");
-
-
-        if (projectsSection) {
-
-            projectsSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
 
     });
 
 });
 
 
+// =====================================================
+// INITIAL DISPLAY
+// =====================================================
 
+updateProjects();
 // =====================================================
 // INITIAL PROJECT DISPLAY
 // =====================================================
