@@ -3243,63 +3243,60 @@
 <!-- Custom JS -->
 
 <script src="script.js"></script>
-    <script>
-
+    
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const loadMoreBtn = document.getElementById("loadMoreBtn");
+    const extraProjects = document.querySelectorAll(".load-more-project");
 
-    const extraProjects = document.querySelectorAll(
-        ".load-more-project"
-    );
-
-    let projectsVisible = false;
+    const projectsPerClick = 3;
+    let visibleProjects = 0;
 
 
-    /* Hide extra projects initially */
-
+    // Hide all additional projects initially
     extraProjects.forEach(function (project) {
         project.style.display = "none";
     });
 
 
-    /* Load More / Show Less */
-
     loadMoreBtn.addEventListener("click", function () {
 
-        projectsVisible = !projectsVisible;
+        const nextLimit = visibleProjects + projectsPerClick;
+
+        for (
+            let i = visibleProjects;
+            i < nextLimit && i < extraProjects.length;
+            i++
+        ) {
+            extraProjects[i].style.display = "";
+        }
+
+        visibleProjects = Math.min(
+            nextLimit,
+            extraProjects.length
+        );
 
 
-        extraProjects.forEach(function (project) {
+        // Change button text when there are more projects
+        if (visibleProjects < extraProjects.length) {
 
-            project.style.display =
-                projectsVisible ? "" : "none";
+            const remaining = extraProjects.length - visibleProjects;
 
-        });
-
-
-        if (projectsVisible) {
-
-            loadMoreBtn.textContent = "Show Less";
+            loadMoreBtn.innerHTML =
+                `Load More <span>(${Math.min(remaining, projectsPerClick)} more)</span>`;
 
         } else {
 
-            loadMoreBtn.textContent = "Load More";
-
-            document
-                .getElementById("projects")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
+            // All projects are visible
+            loadMoreBtn.style.display = "none";
 
         }
 
     });
 
 });
-
-    </script>
-
+</script>
 </body>
 
 </html>
