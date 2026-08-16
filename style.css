@@ -1051,7 +1051,7 @@ footer {
 .home-social-icons {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 10px;
 }
 
 .home-social-icons a {
