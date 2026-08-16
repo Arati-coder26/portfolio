@@ -937,3 +937,28 @@ footer {
     }
 
 }
+/* =====================================================
+   PROJECT FILTER BUTTONS
+===================================================== */
+
+.filter-btn {
+    color: #f8c146 !important;
+    background-color: transparent;
+    border-color: #f8c146;
+}
+
+
+/* Active tab */
+.filter-btn.btn-primary {
+    color: #111827 !important;
+    background-color: #f8c146 !important;
+    border-color: #f8c146 !important;
+}
+
+
+/* Hover */
+.filter-btn:hover {
+    color: #111827 !important;
+    background-color: #f8c146 !important;
+    border-color: #f8c146 !important;
+}
