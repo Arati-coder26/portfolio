@@ -962,3 +962,85 @@ footer {
     background-color: #f8c146 !important;
     border-color: #f8c146 !important;
 }
+
+/* =========================================
+   EXPERIENCE HIGHLIGHT
+========================================= */
+
+.experience-highlight {
+    position: relative;
+    margin: 30px 0;
+    padding: 28px 30px 28px 34px;
+
+    background: #111827;
+    border: 1px solid rgba(248, 193, 70, 0.25);
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* Accent line */
+
+.experience-highlight::before {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+
+    width: 4px;
+
+    background: #f8c146;
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Text */
+
+.experience-highlight p {
+    margin: 0;
+
+    color: #e5e7eb !important;
+
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+
+    text-align: left;
+}
+
+
+/* Hover */
+
+.experience-highlight:hover {
+    border-color: rgba(248, 193, 70, 0.55);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .experience-highlight {
+        padding: 22px 20px 22px 25px;
+        margin: 25px 0;
+    }
+
+    .experience-highlight p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+}
