@@ -1044,3 +1044,38 @@ footer {
     }
 
 }
+/* =====================================================
+   HOME - SOCIAL ICONS
+===================================================== */
+
+.home-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.home-social-icons a {
+    width: 52px;
+    height: 52px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+}
+
+.home-social-icons a i {
+    font-size: 25px;
+}
+
+
+/* Hover effect */
+
+.home-social-icons a:hover {
+    transform: translateY(-4px);
+}
